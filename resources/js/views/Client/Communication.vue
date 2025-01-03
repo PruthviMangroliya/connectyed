@@ -26,7 +26,7 @@
       <!-- Schedule a Meeting Tab Content -->
       <div v-if="currentTab === 'schedule'">
         <!-- Matchmaker Selection -->
-        <div class="mb-6">
+        <!-- <div class="mb-6">
           <h3 class="text-lg font-semibold mb-2">Select a Matchmaker</h3>
           <div v-if="matchmakers.length" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <div
@@ -46,7 +46,7 @@
             </div>
           </div>
           <div v-else class="text-gray-600">No matchmakers available at the moment.</div>
-        </div>
+        </div> -->
 
         <!-- Display Availability -->
         <div v-if="selectedMatchmaker" class="mb-6">

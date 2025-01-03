@@ -22,7 +22,7 @@ class MatchmakerController extends Controller
     {
         try {
             $matchmakers = User::with(['profile', 'specialties', 'availability'])
-                ->where('role', 'matchmaker')
+                ->where('role', 'admin')
                 ->get();
 
             Log::info('Fetched approved matchmakers');

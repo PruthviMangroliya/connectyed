@@ -494,13 +494,20 @@
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="education">
                                 Education
                             </label>
-                            <input
+                            <select
                                 class="appearance-none block w-full border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                 v-model="profile.education"
                                 id="education"
-                                type="text"
                                 required
-                            />
+                            >
+                                <option value="" disabled>Education</option>
+                                <option>Associates</option>
+                                <option>Technical Associates</option>
+                                <option>Bachelors</option>
+                                <option>Masters</option>
+                                <option>PhD</option>
+                                <!-- Add more options if needed -->
+                            </select>
                         </div>
 
                         <!-- Job Title -->
@@ -530,7 +537,6 @@
                                 v-model="profile.sports"
                                 id="sports"
                                 type="text"
-                                required
                             />
                         </div>
 
@@ -544,7 +550,6 @@
                                 v-model="profile.hobbies"
                                 id="hobbies"
                                 type="text"
-                                required
                             />
                         </div>
                     </div>

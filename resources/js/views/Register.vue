@@ -370,12 +370,12 @@
       <div v-if="currentStep === 5 && !form.ismatchmaker">
         <h3 class="font-semibold text-lg mb-4">Professional and Hobbies</h3>
         <div class="grid grid-cols-1 md:grid-cols-1 gap-1">
-          <input-text
+          <select-option
             label="Education"
+            :options="educationlevels"
             v-model="form.education"
             :required="true"
             :error="errors.education"
-            maxlength="100"
           />
           <input-text
             label="Occupation"
@@ -394,15 +394,11 @@
           <input-text
             label="Sports"
             v-model="form.sports"
-            :required="true"
-            :error="errors.sports"
             maxlength="100"
           />
           <input-text
             label="Hobbies"
             v-model="form.hobbies"
-            :required="true"
-            :error="errors.hobbies"
             maxlength="100"
           />
         </div>
@@ -729,6 +725,7 @@ export default {
       ethnicity: ['White/Caucasian','Black/African','Hispanic/Latin','Indian','Asian/Pacific Islander','Mixed race','Other'],
       yesNoOptions: ['Yes', 'No'],
       drinkerOptions: ['None', 'Occasionally', 'Often'],
+      educationlevels: ['Associates','Technical Associates', 'Bachelors', 'Masters', 'PhD'],
       englishLevels: ['Beginner', 'Intermediate', 'Proficient'],
       successMessage: '',
       validationErrors: {},
@@ -954,14 +951,14 @@ export default {
               this.errors.jobTitle = 'Job Title is required';
               hasError = true;
             }
-            if (!this.form.sports) {
-              this.errors.sports = 'Sports is required';
-              hasError = true;
-            }
-            if (!this.form.hobbies) {
-              this.errors.hobbies = 'Hobbies is required';
-              hasError = true;
-            }
+            // if (!this.form.sports) {
+            //   this.errors.sports = 'Sports is required';
+            //   hasError = true;
+            // }
+            // if (!this.form.hobbies) {
+            //   this.errors.hobbies = 'Hobbies is required';
+            //   hasError = true;
+            // }
             if (!this.form.englishLevel) {
               this.errors.englishLevel = 'English Level is required';
               hasError = true;
@@ -1230,8 +1227,8 @@ export default {
           education: 'Education',
           occupation: 'Occupation',
           jobTitle: 'Job Title',
-          sports: 'Sports',
-          hobbies: 'Hobbies',
+          // sports: 'Sports',
+          // hobbies: 'Hobbies',
           englishLevel: 'English Level',
           languages: 'Languages',
           seeking: 'Seeking',

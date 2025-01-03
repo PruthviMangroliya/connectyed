@@ -8,9 +8,9 @@
         request a FREE 1 on 1 Blind Date !
       </p>
     </div>
-    <h2 class="text-xl font-bold mb-4">OVerview</h2>
+    <h2 class="text-xl font-bold mb-4">Overview</h2>
     <!-- Insert Dashboard Overview content here -->
-    <p>OVerview!</p>
+    <p>Overview!</p>
   </div>
 </template>
   

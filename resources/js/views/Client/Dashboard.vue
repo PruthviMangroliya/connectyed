@@ -1,6 +1,13 @@
 <template>
     <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8 items-center justify-center">
       <div class="mx-full shadow-connectyed rounded-xl bg-connectyed-card-mm-light flex flex-col mb-5">
+        <div v-if="user_profile">
+          <div v-if="!user_profile.profile_image1 || !user_profile.profile_image2" class="alert bg-red-600 text-white rounded-lg z-50 text-lg shadow-lg text-center">
+            <span class="tracking-wide">
+              Click <router-link to="/client/profile" class="font-bold text-lg text-white underline">here</router-link> and upload your profile pictures to activate your profile !
+            </span>
+          </div>
+        </div>
         <div class="flex rounded-xl">
           <!-- Sidebar Menu -->
           <aside class="bg-[#e7dccf] text-[#333333] flex flex-col fixed md:relative rounded-l-xl w-72">
@@ -49,6 +56,7 @@
 <script>
 import { faTachometerAlt, faUser, faDollarSign, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import axios from 'axios';
 
 export default {
   name: "ClientDashboard",
@@ -64,15 +72,31 @@ export default {
         { title: "Billing and Subscription", icon: faDollarSign, link: "/billing" },
         { title: "Communication", icon: faEnvelope, link: "/communication" },
       ],
+      user_profile:{}
     };
   },
   computed: {
     user() {
-      return this.$store.state.auth.user;
+    return this.$store.state.auth.user;
     },
     profile() {
-      return this.$store.state.auth.profile;
+    return this.$store.state.auth.profile;
     },
   },
+  mounted(){
+    this.fetchProfile()
+  },
+  methods: {
+    async fetchProfile(){
+      try {
+        const response = await axios.get('/api/profile/getprofile');
+        console.log(response.data.data);
+        this.user_profile = response.data.data;
+      } catch (error) {
+        console.error('Error fetching profile:', error);
+      }
+    }
+  }
+
 };
 </script>
